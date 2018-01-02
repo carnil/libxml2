@@ -12462,6 +12462,10 @@ xmlHaltParser(xmlParserCtxtPtr ctxt) {
 	ctxt->input->cur = BAD_CAST"";
 	ctxt->input->base = ctxt->input->cur;
         ctxt->input->end = ctxt->input->cur;
+    if (ctxt->input->buf)
+        xmlBufEmpty (ctxt->input->buf->buffer);
+    else
+        ctxt->input->length = 0;
     }
 }
 
